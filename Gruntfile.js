@@ -225,12 +225,12 @@ module.exports = grunt => {
       src: cssDest,
       dest: cssDest
     });
-    grunt.config.set('copy.css.files.0.cwd', themeDir);
-    grunt.config.set('copy.css.files.0.dest', path.join(DOCS_DEST, theme));
     grunt.config.set('cssmin.dist', {
       src: cssDest,
       dest: cssDestMin
     });
+    grunt.config.set('copy.css.files.0.cwd', themeDir);
+    grunt.config.set('copy.css.files.0.dest', path.join(DOCS_DEST, theme));
 
     grunt.task.run([
       'concat',
@@ -242,7 +242,7 @@ module.exports = grunt => {
     ]);
   });
 
-  grunt.registerTask('swatch', 'build a theme from scss ', theme => {
+  grunt.registerTask('swatch', 'build a theme from scss', theme => {
     // If no theme is passed, build all swatches
     theme = theme ? [theme] : SWATCHES;
 
@@ -264,3 +264,4 @@ module.exports = grunt => {
   grunt.registerTask('docs', ['docs-css', 'vendor']);
   grunt.registerTask('release', ['swatch', 'docs']);
 };
+
